@@ -89,20 +89,6 @@ namespace BFYOC.Ratings
 
         }
 
-        //[FunctionName("GetAllRatings")]
-        //public static HttpResponseMessage GetAllRatings(
-        //    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetAllRatings")]HttpRequestMessage req,
-        //    [DocumentDB(
-        //        databaseName: "bfyoc",
-        //        collectionName: "ratings",
-        //        ConnectionStringSetting = "CosmosDBConnection",
-        //        SqlQuery = "SELECT * FROM c")] IEnumerable<Ratings> ratings, TraceWriter log)
-        //{
-        //    log.Info("C# HTTP trigger function processed a request.");
-
-        //    return req.CreateResponse(HttpStatusCode.OK, ratings, "application/json");
-        //}
-
         [FunctionName("GetRatings")]
         public static HttpResponseMessage GetRatings(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetRatings/{userId}")]HttpRequestMessage req,
