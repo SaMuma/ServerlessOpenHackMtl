@@ -4,9 +4,9 @@
     "CreateRating_Proxy": {
       "matchCondition": {
         "methods": [ "POST" ],
-        "route": "/api/CreateRating"
+        "route": "/api/ratings"
       },
-      "backendUri": "https://bfyocratings.azurewebsites.net/api/CreateRating"
+      "backendUri": "https://localhost/api/CreateRating"
     }
   }
 }
