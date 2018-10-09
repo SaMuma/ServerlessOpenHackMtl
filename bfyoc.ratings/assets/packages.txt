@@ -1,2 +1,3 @@
 ﻿install-package Microsoft.Azure.WebJobs.Extensions.DocumentDB;
 install-package Microsoft.Net.Sdk.Functions;
+install-package Microsoft.ApplicationInsights;

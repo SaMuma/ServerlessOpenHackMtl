@@ -8,23 +8,27 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.ApplicationInsights;
 
 namespace BFYOC.Ratings
 {
     public static class RatingsFunction
     {
+
         [FunctionName("CreateRating")]
         public static async Task<HttpResponseMessage> CreateRating(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)]HttpRequestMessage req,
             [DocumentDB(
                 databaseName:"bfyoc", 
                 collectionName:"ratings", 
-                ConnectionStringSetting = "CosmosDBConnection")] IAsyncCollector<Ratings> ratingsOut, TraceWriter log)
+                ConnectionStringSetting = "CosmosDBConnection")] IAsyncCollector<Ratings> ratingsOut, ILogger log)
 
         {
-            log.Info("C# HTTP trigger function processed a request.");
+            log.LogInformation("C# HTTP trigger function processed a request.");
 
+            var telemetry = new TelemetryClient();
             var client = new HttpClient();
 
             //parse query parameter
@@ -60,7 +64,9 @@ namespace BFYOC.Ratings
             await ratingsOut.AddAsync(rating);
 
             //return a message of successful add 
+            telemetry.TrackEvent("Rating Submitted");
             return req.CreateResponse(HttpStatusCode.OK, "Rating successfully submitted");
+
         }
 
         //Valid User Method
@@ -97,7 +103,10 @@ namespace BFYOC.Ratings
                 collectionName: "ratings",
                 ConnectionStringSetting = "CosmosDBConnection",
                 SqlQuery = "SELECT * FROM c WHERE c.UserId={userId}")] IEnumerable<Ratings> rating, TraceWriter log)
+
         {
+            var telemetry = new TelemetryClient();
+
             log.Info("C# HTTP trigger function processed a request.");
             return rating == null
                 ? req.CreateResponse(HttpStatusCode.NotFound, "Rating not Found", "application/Json")
@@ -115,6 +124,8 @@ namespace BFYOC.Ratings
                 Id = "{id}")] Ratings rating, TraceWriter log)
         {
             log.Info("#C HTTP Trigger Function Processed a Request");
+            var telemetry = new TelemetryClient();
+
             return rating == null
                 ? req.CreateResponse(HttpStatusCode.NotFound, "Rating not Found", "application/Json")
                 : req.CreateResponse(HttpStatusCode.OK, rating, "application/json");
@@ -122,4 +133,5 @@ namespace BFYOC.Ratings
 
         }
     }
+
 }
