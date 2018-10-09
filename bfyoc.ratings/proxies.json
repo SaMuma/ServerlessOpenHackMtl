@@ -1,10 +1,10 @@
 {
   "$schema": "http://json.schemastore.org/proxies",
   "proxies": {
-    "proxy1": {
+    "CreateRating_Proxy": {
       "matchCondition": {
         "methods": [ "POST" ],
-        "route": "/CreateRating"
+        "route": "/api/CreateRating"
       },
       "backendUri": "https://bfyocratings.azurewebsites.net/api/CreateRating"
     }
