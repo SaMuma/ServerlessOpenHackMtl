@@ -18,9 +18,30 @@
     "GetRatings_Proxy": {
       "matchCondition": {
         "methods": [ "POST" ],
-        "route": "/api/ratings/{user_id}"
+        "route": "/api/ratings/{userId}"
       },
       "backendUri": "https://localhost/api/GetRatings"
+    },
+    "GetUser_Proxy": {
+      "matchCondition": {
+        "methods": [ "GET" ],
+        "route": "/api/users"
+      },
+      "backendUri": "https://serverlessohuser.trafficmanager.net/api/GetUser"
+    },
+    "GetProduct_Proxy": {
+      "matchCondition": {
+        "methods": [ "GET" ],
+        "route": "/api/product/{productId}"
+      },
+      "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProduct"
+    },
+    "GetProducts_Proxy": {
+      "matchCondition": {
+        "methods": [ "GET" ],
+        "route": "/api/products"
+      },
+      "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProducts"
     }
   }
 }
