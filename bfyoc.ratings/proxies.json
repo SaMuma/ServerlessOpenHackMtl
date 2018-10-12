@@ -11,7 +11,7 @@
     "GetRating_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
-        "route": "/api/ratings{id}"
+        "route": "/api/ratings/{id}"
       },
       "backendUri": "https://localhost/api/GetRating"
     },
@@ -25,7 +25,7 @@
     "GetUser_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
-        "route": "/api/users"
+        "route": "/api/users/{userId}"
       },
       "backendUri": "https://serverlessohuser.trafficmanager.net/api/GetUser"
     },
