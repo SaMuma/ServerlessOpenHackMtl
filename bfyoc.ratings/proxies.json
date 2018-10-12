@@ -27,14 +27,24 @@
         "methods": [ "GET" ],
         "route": "/api/users/{userId}"
       },
-      "backendUri": "https://serverlessohuser.trafficmanager.net/api/GetUser"
+      "backendUri": "https://serverlessohuser.trafficmanager.net/api/GetUser",
+      "requestOverrides": {
+
+        "backend.request.querystring.userId": "{userId}"
+
+      }
     },
     "GetProduct_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
         "route": "/api/product/{productId}"
       },
-      "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProduct"
+      "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProduct",
+      "requestOverrides": {
+
+        "backend.request.querystring.userId": "{productId}"
+
+      }
     },
     "GetProducts_Proxy": {
       "matchCondition": {
