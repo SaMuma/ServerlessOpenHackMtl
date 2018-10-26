@@ -17,7 +17,7 @@
     },
     "GetRatings_Proxy": {
       "matchCondition": {
-        "methods": [ "POST" ],
+        "methods": [ "GET" ],
         "route": "/api/ratings"
       },
       "backendUri": "https://localhost/api/GetRatings"
@@ -37,7 +37,7 @@
     "GetProduct_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
-        "route": "/api/product/{id}"
+        "route": "/api/products/{id}"
       },
       "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProduct",
       "requestOverrides": {
