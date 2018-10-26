@@ -22,7 +22,7 @@
     "GetRating_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
-        "route": "/api/ratings/{id}"
+        "route": "/ratings/{id}"
       },
       "backendUri": "https://localhost/api/GetRating/{id}"
     },
