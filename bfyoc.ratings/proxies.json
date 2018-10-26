@@ -37,12 +37,12 @@
     "GetProduct_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
-        "route": "/api/products/{id}"
+        "route": "/api/products/{productId}"
       },
       "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProduct",
       "requestOverrides": {
 
-        "backend.request.querystring.productId": "{id}"
+        "backend.request.querystring.productId": "{productId}"
 
       }
     },
