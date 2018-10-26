@@ -1,6 +1,8 @@
 {
   "$schema": "http://json.schemastore.org/proxies",
+
   "proxies": {
+
     "CreateRating_Proxy": {
       "matchCondition": {
         "methods": [ "POST" ],
@@ -8,13 +10,7 @@
       },
       "backendUri": "https://localhost/api/CreateRating"
     },
-    "GetRating_Proxy": {
-      "matchCondition": {
-        "methods": [ "GET" ],
-        "route": "/api/ratings/{id}"
-      },
-      "backendUri": "https://localhost/api/GetRating/{id}"
-    },
+
     "GetRatings_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
@@ -22,18 +18,23 @@
       },
       "backendUri": "https://localhost/api/GetRatings"
     },
-    "GetUser_Proxy": {
+
+    "GetRating_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
-        "route": "/api/users/{id}"
+        "route": "/api/ratings/{id}"
       },
-      "backendUri": "https://serverlessohuser.trafficmanager.net/api/GetUser",
-      "requestOverrides": {
-
-        "backend.request.querystring.userId": "{id}"
-
-      }
+      "backendUri": "https://localhost/api/GetRating/{id}"
     },
+
+    "GetProducts_Proxy": {
+      "matchCondition": {
+        "methods": [ "GET" ],
+        "route": "/api/products"
+      },
+      "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProducts"
+    },
+
     "GetProduct_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
@@ -41,17 +42,19 @@
       },
       "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProduct",
       "requestOverrides": {
-
         "backend.request.querystring.productId": "{productId}"
-
       }
     },
-    "GetProducts_Proxy": {
+
+    "GetUser_Proxy": {
       "matchCondition": {
         "methods": [ "GET" ],
-        "route": "/api/products"
+        "route": "/api/users/{userId}"
       },
-      "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProducts"
+      "backendUri": "https://serverlessohuser.trafficmanager.net/api/GetUser",
+      "requestOverrides": {
+        "backend.request.querystring.userId": "{userId}"
+      }
     }
   }
 }
