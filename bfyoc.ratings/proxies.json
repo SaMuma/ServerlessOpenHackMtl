@@ -29,9 +29,7 @@
       },
       "backendUri": "https://serverlessohuser.trafficmanager.net/api/GetUser",
       "requestOverrides": {
-
         "backend.request.querystring.userId": "{id}"
-
       }
     },
     "GetProduct_Proxy": {
