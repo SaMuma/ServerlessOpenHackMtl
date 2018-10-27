@@ -97,12 +97,12 @@ namespace BFYOC.Ratings
 
         [FunctionName("GetRatings")]
         public static HttpResponseMessage GetRatings(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetRatings/{userId}")]HttpRequestMessage req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequestMessage req,
         [DocumentDB(
                 databaseName: "bfyoc",
                 collectionName: "ratings",
                 ConnectionStringSetting = "CosmosDBConnection",
-                SqlQuery = "SELECT * FROM c WHERE c.userId={userId}")] IEnumerable<Ratings> rating, TraceWriter log)
+                SqlQuery = "SELECT * FROM c")] IEnumerable<Ratings> rating, TraceWriter log)
 
         {
             var telemetry = new TelemetryClient();
