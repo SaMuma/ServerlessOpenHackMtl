@@ -102,14 +102,14 @@ namespace BFYOC.Ratings
                 databaseName: "bfyoc",
                 collectionName: "ratings",
                 ConnectionStringSetting = "CosmosDBConnection",
-                SqlQuery = "SELECT * FROM c WHERE c.UserId={userId}")] IEnumerable<Ratings> rating, TraceWriter log)
+                SqlQuery = "SELECT * FROM c WHERE c.userId={userId}")] IEnumerable<Ratings> rating, TraceWriter log)
 
         {
             var telemetry = new TelemetryClient();
 
             log.Info("C# HTTP trigger function processed a request.");
             return rating == null
-                ? req.CreateResponse(HttpStatusCode.NotFound, "Rating not Found", "application/Json")
+                ? req.CreateResponse(HttpStatusCode.NotFound, "Rating not Found", "application/json")
                 : req.CreateResponse(HttpStatusCode.OK, rating, "application/json");
 
         }
@@ -127,7 +127,7 @@ namespace BFYOC.Ratings
             var telemetry = new TelemetryClient();
 
             return rating == null
-                ? req.CreateResponse(HttpStatusCode.NotFound, "Rating not Found", "application/Json")
+                ? req.CreateResponse(HttpStatusCode.NotFound, "Rating not Found", "application/json")
                 : req.CreateResponse(HttpStatusCode.OK, rating, "application/json");
 
 
