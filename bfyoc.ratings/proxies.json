@@ -11,7 +11,8 @@
       "backendUri": "https://serverlessohuser.trafficmanager.net/api/GetUser",
       "requestOverrides": {
         "backend.request.querystring.userId": "{id}"
-      }
+      },
+      "debug": true
     },
 
     "GetProduct_Proxy": {
@@ -22,7 +23,8 @@
       "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProduct",
       "requestOverrides": {
         "backend.request.querystring.productId": "{id}"
-      }
+      },
+      "debug": true
     },
 
     "GetProducts_Proxy": {
@@ -30,7 +32,8 @@
         "methods": [ "GET" ],
         "route": "/api/products"
       },
-      "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProducts"
+      "backendUri": "https://serverlessohproduct.trafficmanager.net/api/GetProducts",
+      "debug": true
     },
 
     "GetRatings_Proxy": {
@@ -38,7 +41,8 @@
         "methods": [ "GET" ],
         "route": "/api/ratings"
       },
-      "backendUri": "https://localhost/api/GetRatings"
+      "backendUri": "https://localhost/api/GetRatings",
+      "debug": true
     },
 
     "GetRating_Proxy": {
@@ -46,7 +50,8 @@
         "methods": [ "GET" ],
         "route": "/api/ratings/{id}"
       },
-      "backendUri": "https://localhost/api/GetRating/{id}"
+      "backendUri": "https://localhost/api/GetRating/{id}",
+      "debug": true
     },
 
     "CreateRating_Proxy": {
@@ -54,7 +59,8 @@
         "methods": [ "POST" ],
         "route": "/api/ratings"
       },
-      "backendUri": "https://localhost/api/CreateRating"
+      "backendUri": "https://localhost/api/CreateRating",
+      "debug": true
     }
   }
 }
